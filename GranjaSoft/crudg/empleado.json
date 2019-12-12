@@ -1,0 +1,57 @@
+{
+	"model_name":"Empleado",
+	"soft_deletes":"yes",
+	"pk":"id",
+	"localize":"yes",
+	"table":"empleados",
+    "fields": [
+        	
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "edad",
+            "type": "integer"
+        },
+        {
+            "name": "puesto",
+            "type": "string"
+        },
+        {
+            "name": "granja_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "granja_id",
+            "references": "id",
+            "on": "granjas",
+            "onDelete": "cascade"        }
+    ],
+    "relationships": [
+        {
+            "name": "granja",
+            "type": "belongsTo",
+            "class": "App\\Granja"
+        },
+        {
+            "name": "actividades",
+            "type": "hasMany",
+            "class": "App\\Actividad"
+        }
+        
+    ],
+    "validations": [
+        {
+            "field": "nombre",
+            "rules": "required|min:4|max:20"
+        },
+		{
+            "field": "puesto",
+            "rules": "required|min:3|max:20"
+        }
+    ]
+	
+}

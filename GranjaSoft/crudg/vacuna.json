@@ -1,0 +1,51 @@
+{
+	"model_name":"Vacuna",
+	"soft_deletes":"yes",
+	"pk":"id",
+	"localize":"yes",
+	"table":"vacunas",
+    "fields": [		
+        {
+            "name": "animal_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "tipo",
+            "type": "string"
+        },
+        {
+            "name": "caducidad",
+            "type": "date"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "animal_id",
+            "references": "id",
+            "on": "animales",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "animal",
+            "type": "belongsTo",
+            "class": "App\\Animal"
+        }
+    ],
+    "validations": [
+        {
+            "field": "nombre",
+            "rules": "required|min:5|max:20"
+        },
+		{
+            "field": "tipo",
+            "rules": "required|min:5|max:20"
+        }
+    ]
+	
+}

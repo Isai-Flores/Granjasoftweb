@@ -1,0 +1,39 @@
+{
+	"model_name":"Granja",
+	"soft_deletes":"yes",
+	"pk":"id",
+	"localize":"yes",
+	"table":"granjas",
+    "fields": [		
+        
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "tipo",
+            "type": "string"
+        }
+        ],    
+    "relationships": [
+        {
+            "name": "empleados",
+            "type": "hasMany",
+            "class": "App\\Empleado"
+        },
+        {
+            "name": "naves",
+            "type": "hasMany",
+            "class": "App\\Nave"
+        }
+   
+    ],
+    
+    "validations": [
+        {
+            "field": "nombre",
+            "rules": "required|min:3|max:20"
+        }
+    ]
+	
+}

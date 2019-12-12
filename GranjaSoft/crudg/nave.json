@@ -1,0 +1,47 @@
+{
+	"model_name":"Nave",
+	"soft_deletes":"yes",
+	"pk":"id",
+	"localize":"yes",
+	"table":"naves",
+    "fields": [		
+        {
+            "name": "granja_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "secciones",
+            "type": "integer"
+        },
+        {
+            "name": "tipo_de_nave",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "granja_id",
+            "references": "id",
+            "on": "granjas",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "granja",
+            "type": "belongsTo",
+            "class": "App\\Granja"
+        }
+    ],
+    "validations": [
+        {
+            "field": "secciones",
+            "rules": "required|min:1"
+        }
+    ]
+	
+}
