@@ -1,27 +1,21 @@
 <?php 
 namespace App\Http\Controllers\Services;
-use App\Vacunas;
+use App\Vacuna;
 use App\Http\Controllers\Controller;
-use App\Contracts\IOperaciones;
-use App\Contracts\IProductSearchable;
+use App\Contracts\IEliminarVacunas;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
-class EliminarVacunasService 	
-	extends Controller
-	implements IEliminarvacunas{
+class EliminarVacunasService extends Controller	implements IEliminarVacunas{
 
-	public function eliminar($id)
+	public function eliminar($animal_id,$nombre, $tipo, $caducidad)
     {
-        
-        $inventario=Vacunas::find(1);
-        $response ->assertJson('r'=>1);
-        $sql = "SELECT * FROM vacuans WHERE id = $id";
-        // Conseguimos el objeto
-		$vac=vacuans::where('nombre', '=', "viruela aviar")->first();
- 
-		// Lo eliminamos de la base de datos
-		$vac->delete();
-
+       $vacuna=Vacuna::delete([
+       		'animal_id'=>$animal_id,
+            'nombre'=>$nombre,
+            'tipo'=>$tipo,
+            'caducidad'=>$caducidad
+        ]);
 	}
 }
 

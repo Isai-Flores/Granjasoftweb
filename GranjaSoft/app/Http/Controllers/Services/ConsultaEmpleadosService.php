@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Services;
 use App\Http\Controllers\Controller;
-use App\Contracts\IRegistroEmpleados;
+use App\Contracts\IConsultaEmpleados;
 use App\Empleado;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class RegistroEmpleadosService extends Controller implements IRegistroEmpleados{
-    public function registro($nombre, $edad, $puesto, $granja_id){
+class RegistroEmpleadosService extends Controller implements IConsultaEmpleados{
+    public function consulta($nombre, $edad, $puesto, $granja_id){
 
-        $empleado=Empleado::create([
+        $empleado=Empleado::consult([
             'nombre'=>$nombre,
             'edad'=>$edad,
             'puesto'=>$puesto,
